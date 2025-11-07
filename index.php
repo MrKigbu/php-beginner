@@ -14,21 +14,11 @@ ini_set('display_startup_errors', 1);
     <h1>I LOVE CODING PERSONALLY</h1>
 
     <?php
-$min = array(
-    "name" => array (
-        "Subname" => "Sammy Love",
-        "Subname1" => "Sammy lolo",
-        "Subname2" => "Sammy Lobatan",
-        "Subname3" => "Sammy Emilokan",),
-     "name1" =>"John maigemu",
-     "name2" => "Sani Mai Gindi", 
-     "name3" =>"Lover Boy", 
-     "name4" =>"Shegunaye");
-
-echo $min["name"]["Subname3"] . "<br>";
-echo $min["name1"];
-// echo var_dump($min);
-
+define('name', 'sammy');
+define("listdata", array("Sammy", "Felicity", "John bull"));
+var_dump(listdata);
+echo listdata[2];
+echo name;
     ?>
 </body>
 </html>
