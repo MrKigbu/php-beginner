@@ -14,11 +14,26 @@ ini_set('display_startup_errors', 1);
     <h1>I LOVE CODING PERSONALLY</h1>
 
     <?php
-define('name', 'sammy');
-define("listdata", array("Sammy", "Felicity", "John bull"));
-var_dump(listdata);
-echo listdata[2];
-echo name;
+    //conditonal statement
+    #if statement 
+$age1 = 20;
+$age2 = 120;
+$age3 = 320;
+$age4 = 10;
+$child = "Baby Sitter";
+$adult = "big Daddy";
+
+if ($age1 <= 10) {
+    echo "Im an adult";
+}
+//elseif
+elseif($age1 ==20){
+    echo "I am getting notices";
+}
+//else statement
+else{ echo "I am not old enough";}
+//less than condition
+
     ?>
 </body>
 </html>
