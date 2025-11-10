@@ -14,14 +14,13 @@ ini_set('display_startup_errors', 1);
     <h1>I LOVE CODING PERSONALLY</h1>
 
     <?php
-//PHP default value
- function addNumber($num1, $num2){
-    return $num1 + $num2;
+ //reference argument 
+ function addnum(&$num){
+$num +=5;
  }
- define("name", "Samuel bololo");
- define("last", "Kilishi");
- echo 71 + addNumber(52, 52);
- 
+ $number =11;
+ addnum($number);
+ echo $number;
 
     ?>
 </body>
