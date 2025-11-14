@@ -13,15 +13,18 @@ ini_set('display_startup_errors', 1);
 <body>
     <h1>I LOVE CODING PERSONALLY</h1>
 
+    <section>
+        <footer>
+            <p>
+                //copyright at current date
+                &copy; <?php echo date("Y"); ?> Sammy Project
+            </p>
+        </footer>
+    </section>
+    
+    //prints date
     <?php
- //reference argument 
- function addnum(&$num){
-$num +=5;
- }
- $number =11;
- addnum($number);
- echo $number;
-
+    echo "Today's date is " . date("l d_m_Y");
     ?>
 </body>
 </html>
