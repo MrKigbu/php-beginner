@@ -1,9 +1,12 @@
 <?php
+//how to assess your data from a POST Method
 if(isset($_POST["login"])){
-    echo var_dump($_POST);
-}
-if(isset($_POST["register"])){
-    echo var_dump($_POST);
+    //declare the variable
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    echo "Welcome ooo $name, Your email is $email, and also your password is $password, thank you very much";
+
 }
 ?>
 <!DOCTYPE html>
@@ -18,14 +21,12 @@ if(isset($_POST["register"])){
    
     <form action="" method="POST">
         <label for="">Name:</label>
-        <input type="text" name="name" id="">
-        <button type="submit" name="login" >Submit</button>
-    </form>
-    <br>
-    <form action="" method="POST">
-        <label for="">Register:</label>
-        <input type="text" name="register" id="">
-        <button type="submit" name="First_name" >Submit</button>
-    </form>
+        <input type="text" name="name" id=""><br>
+        <label for="">Email:</label>
+        <input type="email" name="email" id=""> <br>
+        <label for="">password:</label>
+        <input type="password" name="password" id="">
+        <button type="submit" name="login" >login</button>
+    
 </body>
 </html>
