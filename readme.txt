@@ -1,1 +1,0 @@
-I always have passion for coding and this is a great opportunity for me and for using this platform 
