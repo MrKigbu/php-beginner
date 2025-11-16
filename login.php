@@ -11,7 +11,7 @@ include 'inc/process.php';
 ?>
 <div class="d-flex aligns-items-center justify-content-center py-3">
     <form action="" method="Post">
-        <h4 class="text-center">Register</h4>
+        <h4 class="text-center">Login</h4>
         <?php
         if(isset($error)) {
             ?>
@@ -28,11 +28,7 @@ include 'inc/process.php';
 
         }
         ?>
-        <div class="form-group py-1">
-            <label for="">Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter your name" id="">
-        </div>
-        <div class="form-group py-1">
+                <div class="form-group py-1">
             <label for="">Email</label>
             <input type="email" name="email" placeholder="Enter Your Email" class="form-control" id="">
         </div>
@@ -42,9 +38,9 @@ include 'inc/process.php';
         </div>
         <hr>
         <p>
-            If already registered <a href="login.php">Login</a>
+            New User <a href="register.php">Register here</a>
         </p>
-        <button type="submit" name="register" class="btn btn-primary text-light my-3 ">Register</button>
+        <button type="submit" name="login" class="btn btn-primary text-light my-3 ">Login</button>
     </form>
 </div>
 

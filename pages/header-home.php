@@ -5,7 +5,7 @@
       Sammy BLog
     </a>
     <div class="d-flex">
-        <a href="register.php" class="nav-link text-primary">login</a>
+        <a href="login.php" class="nav-link text-primary">login</a>
         <a href="register.php" class="nav-link text-primary">Register</a>
     </div>
   </div>
