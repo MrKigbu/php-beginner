@@ -1,28 +1,21 @@
 <div class="container">
-    <nav class="navbar navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand text-primary" href="#" >
-      <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
-      Sammy Love
-    </a>
-  </div>
-</nav>
+   <?php require './pages/header-home.php';?>
 <div class="container-fluid mx-3 my-3">
 <div class="row">
     <div class="col-8">
         <div class="row">
             <?php
-            for ($i=1; $i <=9 ; $i++) { 
+            for ($i=1; $i <=6 ; $i++) { 
              ?>
               <div class="col-4 my-3">
                 <div class="card">
-  <img src="https://scontent.flos5-1.fna.fbcdn.net/v/t39.30808-6/495084013_9764110123683571_1399762290237558906_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHCQpZc0BLveUvBPtJEs5VlmsRxAzLL7nKaxHEDMsvuclQnlzRJZbrprYC3JB8KHUIiLMEBZ4-ikm87-thjf07K&_nc_ohc=wHfU58JcWvsQ7kNvwFet20C&_nc_oc=AdkUaDSK0GGsHLgKNjmDShOoCdw6QUtJD41KfbXvFCXVbr9LRSKhN-CVkgFbo56eWkM&_nc_zt=23&_nc_ht=scontent.flos5-1.fna&_nc_gid=ZDpZAz8A2YooNyYlAxny_w&oh=00_AfgoBS4Y4zb4II_gPyK5_7q-nTCtRcAekq9D5rNFgWfrzA&oe=691E569F" style="height: 200px;width:100%;"class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+        <img src="https://media.istockphoto.com/id/1473203340/photo/face-beauty-and-satisfaction-with-a-model-black-woman-in-studio-on-a-gray-background-to.webp?b=1&s=612x612&w=0&k=20&c=03ibmNP5V01ZSgJ68hn2NAjsBJ4ohDdY2-3VdGVUygo=" style="height: 200px;width:100%;"class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        </div>
             </div>
              <?php   
             }
@@ -50,7 +43,7 @@
             <h4>Categories</h4>
             <ul>
                 <?php
-                for ($i=1; $i <=5 ; $i++) { 
+                for ($i=1; $i <=3 ; $i++) { 
                     ?>
 
                     <li>
@@ -65,4 +58,5 @@
 </div>
 
 </div>
+<?php require './pages/footer-home.php';?>
 </div>
