@@ -24,15 +24,18 @@ if(isset($_POST["register"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $encrypt_password = md5($password);
-    //Check if user exist
+    //Check if user already exist
     $sql_check2 = "SELECT * FROM users WHERE email = '$email'";
     $query_check2 = mysqli_query($connection, $sql_check2);
     if(mysqli_fetch_assoc($query_check2)){
         //Check if the email and password exist 
         $sql_check = "SELECT * FROM users WHERE email = '$email'AND password = '$encrypt_password'";
         $query_check = mysqli_query($connection, $sql_check);
-        if(mysqli_fetch_assoc($query_check)){
+        if($result=mysqli_fetch_assoc($query_check)){
+    
             //login to dashboard
+            $_SESSION["user"] = $result;
+            header("location: dashboard.php");
         $success = "User Logged in";
     }else {
         

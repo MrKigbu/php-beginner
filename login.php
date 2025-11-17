@@ -1,4 +1,5 @@
 <?php 
+session_start();
 //scritps and links 
 require "inc/header.php";
 
