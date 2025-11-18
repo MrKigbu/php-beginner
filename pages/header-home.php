@@ -1,6 +1,6 @@
  <nav class="navbar navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand text-primary" href="index.php" >
+    <a class="navbar-brand text-primary" href="javascript:history.back()" >
       <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
       Sammy BLog
     </a>

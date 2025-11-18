@@ -51,4 +51,39 @@ if(isset($_POST["register"])){
         $error = "User email not found";       
     }
     }
+    if(isset($_POST["category"])){
+        $name = $_POST["name"];
+        //SQL
+        $sql = "INSERT INTO category(name) VALUES('$name')";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            $success = "Category updated successfully";
+        }else{
+            $error = "Unable to add category";
+        }
+    }
+    if(isset($_GET["delete_category"]) && !empty($_GET["delete_category"])) {
+        //SQL
+        $id = $_GET["delete_category"];
+        $sql = "DELETE FROM category WHERE id = '$id' ";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            $success = "Category deleted";
+        }else{
+            $error = "Unable to delete category";
+        }
+    }
+    
+    if(isset($_POST["edit_category"])){
+        $name = $_POST["name"];
+        $edit_id = $_GET["edit_id"];
+        // SQL
+        $sql = "UPDATE category SET name = '$name' WHERE id = '$edit_id' ";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            $success = "Category Updated";
+        }else{
+            $error = "Unable to update category";
+        }
+    }
 ?>  

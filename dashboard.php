@@ -36,7 +36,7 @@ include 'inc/process.php';
                     <a href="#">Add New Posts</a>
                 </li>
                  <li>
-                    <a href="#">Categories</a>
+                    <a href="category.php" class="text-danger" >Categories</a>
                 </li>
                  <li>
                     <a href="#">Users</a>
