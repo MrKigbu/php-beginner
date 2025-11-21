@@ -16,24 +16,28 @@ include 'inc/process.php';
 <div class="container p-3">
     <div class="row">
       <div class="col-12">
-        <div class="row">
-          <div class="col-6"><h4>Welcome <?php echo  $_SESSION["user"]["name"]; ?></h4></div>
-          <div class="col-6">
-            <a href="logout.php" class="btn btn-sm btn-danger ">Logout</a>
-          </div>
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
         </div>
-      </div>
+
+        <div class="col-6 text-end">
+            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+
         <div class="col-3">
             <h6>Navigations</h6>
             <ul>
                 <li>
-                    <a href="#">Posts</a>
+                    <a href="posts.php">Posts</a>
                 </li>
                  <li>
                     <a href="#">Comments</a>
                 </li>
                  <li>
-                    <a href="#">Add New Posts</a>
+                    <a href="new-post.php">Add New Posts</a>
                 </li>
                  <li>
                     <a href="category.php" class="text-danger" >Categories</a>
@@ -49,30 +53,74 @@ include 'inc/process.php';
         <div class="col-9">
         <div class="container">
             <h6>All Posts</h6>
+            
+            <?php
+        if(isset($error)) {
+            ?>
+            <div class="alert alert-danger">
+            <strong><?php echo $error; ?></strong>
+        </div>
+        <?php
+        }elseif(isset($success)){
+            ?>
+            <div class="alert alert-success">
+            <strong><?php echo $success; ?></strong>
+        </div>
+            <?php
+
+        }
+        ?>
      <table class="table table-primary table-hover table-sm">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Thumbnail</th>
-      <th scope="col">Title</th>
-      <th scope="col">Status</th>
+      <th scope="col">#</th>      
+      <th scope="col">Image</th>      
+      <th scope="col">Title</th>      
+      <th scope="col">Status</th>      
+      <th scope="col">Date</th>      
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td><img src="https://cdn.pixabay.com/photo/2016/03/26/22/13/man-1281562_1280.jpg" style="height: 30px;width:40px;"class="card-img-top"alt=""></td>
-      <td>Otto</td>
-      <td>Active</td>
+  <?php
+  $sql = "SELECT * FROM posts";
+  $query = mysqli_query($connection, $sql);
+  while ($result = mysqli_fetch_assoc($query)) {
+    ?>
+     <tr>
+      <td scope="row">1</td>     
+      <td scope="row">
+        <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
+      </td>     
       <td>
-        <a href="#">Edit</a>
+        <?php echo $result["title"] ?>
+      </td> 
+      <td>
+        <?php
+        if($result["status"]==1){
+            echo "Active";
+        }else{
+            echo "Not Active";
+        }
+        
+        ?>
+      </td> 
+      <td>
+        <?php echo $result["timestamp"] ?>
+      </td> 
+
+      <td>
+        <a href="category-edit.php?edit_id=<?php echo $result["id"] ?>">Edit</a>
         |
-        <a href="#">Delete</a>
+        <a href="category.php? delete_category=<?php echo $result["id"];  ?>">Delete</a>
       </td>
       
     </tr>
-    
+
+    <?php
+  }
+
+  ?>    
   </tbody>
 </table>
         </div>

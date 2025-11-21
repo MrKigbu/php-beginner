@@ -28,30 +28,32 @@ require "inc/header.php";
     header("location: category.php");
 }
     ?>
-    
+  
 
     <div class="container p-3">
         <div class="row">
 
             <!-- Greeting + Logout -->
             <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
-                    </div>
-                    <div class="col-6 text-end">
-                        <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-                    </div>
-                </div>
-            </div>
+    <div class="row align-items-center">
+        <div class="col-6">
+            <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
+        </div>
+
+        <div class="col-6 text-end">
+            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+
 
             <!-- Sidebar Navigation -->
             <div class="col-3">
                 <h6>Navigations</h6>
                 <ul>
-                    <li><a href="#">Posts</a></li>
+                    <li><a href="posts.php">Posts</a></li>
                     <li><a href="#">Comments</a></li>
-                    <li><a href="#">Add New Posts</a></li>
+                    <li><a href="new-post.php">Add New Posts</a></li>
                     <li><a href="category.php" class="text-danger">Categories</a></li>
                     <li><a href="#">Users</a></li>
                     <li><a href="#">Add New User</a></li>

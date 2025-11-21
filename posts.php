@@ -15,7 +15,8 @@ include 'inc/process.php';
 ?>
 <div class="container p-3">
     <div class="row">
-    <div class="col-12">
+      <div class="col-12">
+        <div class="col-12">
     <div class="row align-items-center">
         <div class="col-6">
             <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
@@ -27,11 +28,12 @@ include 'inc/process.php';
     </div>
 </div>
 
+      </div>
         <div class="col-3">
             <h6>Navigations</h6>
             <ul>
                 <li>
-                    <a href="posts.php">Posts</a>
+                    <a href="posts.php" class="text-danger" >Posts</a>
                 </li>
                  <li>
                     <a href="#">Comments</a>
@@ -40,7 +42,7 @@ include 'inc/process.php';
                     <a href="new-post.php">Add New Posts</a>
                 </li>
                  <li>
-                    <a href="category.php" class="text-danger" >Categories</a>
+                    <a href="category.php" >Categories</a>
                 </li>
                  <li>
                     <a href="#">Users</a>
@@ -52,8 +54,8 @@ include 'inc/process.php';
         </div>
         <div class="col-9">
         <div class="container">
-            <h6>All Categories</h6>
-            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#exampleModal" >New Category</a>
+            <h6>All Posts</h6>
+            
             <?php
         if(isset($error)) {
             ?>
@@ -74,19 +76,41 @@ include 'inc/process.php';
   <thead>
     <tr>
       <th scope="col">#</th>      
+      <th scope="col">Image</th>      
       <th scope="col">Title</th>      
+      <th scope="col">Status</th>      
+      <th scope="col">Date</th>      
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
   <?php
-  $sql = "SELECT * FROM category";
+  $sql = "SELECT * FROM posts";
   $query = mysqli_query($connection, $sql);
   while ($result = mysqli_fetch_assoc($query)) {
     ?>
      <tr>
-      <th scope="row">1</th>     
-      <td><?php echo $result["name"];  ?></td>      
+      <td scope="row">1</td>     
+      <td scope="row">
+        <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
+      </td>     
+      <td>
+        <?php echo $result["title"] ?>
+      </td> 
+      <td>
+        <?php
+        if($result["status"]==1){
+            echo "Active";
+        }else{
+            echo "Not Active";
+        }
+        
+        ?>
+      </td> 
+      <td>
+        <?php echo $result["timestamp"] ?>
+      </td> 
+
       <td>
         <a href="category-edit.php?edit_id=<?php echo $result["id"] ?>">Edit</a>
         |
@@ -105,32 +129,7 @@ include 'inc/process.php';
         </div>
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="">Title</label>
-                <input type="text" required name="name" class="form-control" placeholder="Enter title" id="">
-            </div>
-            <div class="my-3">
-                <button type="submit" name="category" class="btn btn-primary" >Submit</button>
-            </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <?php
 //footer content

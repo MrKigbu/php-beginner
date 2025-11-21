@@ -86,4 +86,41 @@ if(isset($_POST["register"])){
             $error = "Unable to update category";
         }
     }
+
+    if(isset($_POST["new_post"])){
+        //Uploading to upload folder
+        $target_dir = "uploads/";
+        $basename = basename($_FILES["thumbnail"]["name"]);
+        $upload_file = $target_dir . $basename;
+
+        //move uploaded file to upload folder
+        $move = move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $upload_file);
+        //check if file is moved
+        if($move){
+            $url = $upload_file;
+            $title = $_POST["title"];
+            $content = $_POST["content"];
+            $status = $_POST["status"];
+            $category_id = $_POST["category_id"];
+            $thumbnail = $url;
+
+            //sql statement 
+            $sql = "INSERT INTO posts(title, content, status, category_id, thumbnail) VALUES('$title', '$content','$status','$category_id', '$thumbnail')";
+            //query execution/statement
+            $query = mysqli_query($connection, $sql);
+
+            //Check if is stored 
+            if($query){
+                $success = "Post published successfully";   
+        }else {
+            $error = "Unable to publish post";
+        }
+
+        }else{
+            $error = "Unable to upload image";
+        }
+       
+    }
+
+
 ?>  

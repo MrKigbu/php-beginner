@@ -14,82 +14,86 @@ include 'inc/process.php';
 
     <!-- CAROUSEL (LEFT SIDE - col-9) -->
     <div class="col-md-9">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6"></button>
-            </div>
+  <div id="carouselExampleDark" class="carousel carousel-dark slide carousel-fade custom-carousel" data-bs-ride="carousel">
+      
+      <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5"></button>
+      </div>
 
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="4000">
-                    <img src="https://cdn.pixabay.com/photo/2016/04/05/03/18/prayer-1308663_1280.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Welcome Back</h5>
-                        <p>Sign in to continue your journey.</p>
-                    </div>
-                </div>
+      <div class="carousel-inner">
 
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img src="https://cdn.pixabay.com/photo/2015/08/07/08/24/bible-879085_1280.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Grow With Us</h5>
-                        <p>Access your dashboard and explore more tools.</p>
-                    </div>
-                </div>
+          <div class="carousel-item active" data-bs-interval="4000">
+              <div class="overlay"></div>
+              <img src="uploads/dog-4897327_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>Welcome Back</h5>
+                  <p>Sign in to continue your journey.</p>
+              </div>
+          </div>
 
-                <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2016/04/23/14/08/frog-1347642_1280.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Stay Connected</h5>
-                        <p>Engage and share your ideas freely.</p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img src="https://www.istockphoto.com/photo/a-woman-using-and-typing-on-laptop-with-blank-white-desktop-screen-gm1160505836-317669361?utm_source=pixabay&utm_medium=affiliate&utm_campaign=sponsored_photo&utm_content=srp_topbanner-popular_media&utm_term=model" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Grow With Us</h5>
-                        <p>Access your dashboard and explore more tools.</p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img src="https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_1280.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Grow With Us</h5>
-                        <p>Access your dashboard and explore more tools.</p>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="4000">
-                    <img src="https://cdn.pixabay.com/photo/2015/08/07/08/24/bible-879085_1280.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Grow With Us</h5>
-                        <p>Access your dashboard and explore more tools.</p>
-                    </div>
-                </div>
-            </div>
+          <div class="carousel-item" data-bs-interval="4000">
+              <div class="overlay"></div>
+              <img src="uploads/new-years-eve-1283521_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>Grow With Us</h5>
+                  <p>Access your dashboard and explore more tools.</p>
+              </div>
+          </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </div>
+          <div class="carousel-item">
+              <div class="overlay"></div>
+              <img src="uploads/prayer-1308663_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>Stay Connected</h5>
+                  <p>Engage and share your ideas freely.</p>
+              </div>
+          </div>
+
+          <div class="carousel-item">
+              <div class="overlay"></div>
+              <img src="uploads/room-1336497_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>Connect With Us</h5>
+                  <p>Login your dashboard</p>
+              </div>
+          </div>
+
+          <div class="carousel-item">
+              <div class="overlay"></div>
+              <img src="uploads/workplace-5517762_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>You are in the right place</h5>
+                  <p>With one access, explore endless opportunities.</p>
+              </div>
+          </div>
+
+          <div class="carousel-item">
+              <div class="overlay"></div>
+              <img src="uploads/positive-4907261_1280.jpg" class="d-block w-100 carousel-img">
+              <div class="carousel-caption">
+                  <h5>Grow With Us</h5>
+                  <p>You won't regret this</p>
+              </div>
+          </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+      </button>
+
+  </div>
+</div>
+
 
     <!-- LOGIN FORM (RIGHT SIDE - col-3) -->
     <div class="col-md-3 d-flex align-items-center">
