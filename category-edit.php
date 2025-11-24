@@ -4,15 +4,10 @@ session_start();
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
 }
-
-
-
 // scripts and links 
 require "inc/header.php";
 ?>
-
 <div class="container">
-
     <?php
     require './pages/header-home.php';
     include 'inc/process.php';

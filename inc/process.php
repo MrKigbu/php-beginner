@@ -123,4 +123,69 @@ if(isset($_POST["register"])){
     }
 
 
+    if(isset($_POST["update_post"])) {
+        $id = $_GET["edit_post_id"];
+        if($_FILES["thumbnail"]["name"] != ""){
+            //update image
+            $target_dir = "uploads/";
+            $url = $target_dir.basename($_FILES["thumbnail"]["name"]);
+            //move uploaded file to upload folder
+            if(move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $url)){
+                //update database
+
+                //parameters
+                $title = $_POST["title"];
+                $content = $_POST["content"];
+                $status = $_POST["status"];
+                $category_id = $_POST["category_id"];
+                $thumbnail = $url;
+                
+                //sql statement
+                $sql = "UPDATE posts SET title='$title', content='$content', status='$status', category_id='$category_id', thumbnail='$thumbnail' WHERE id = '$id' ";
+                //querry execution 
+                $query = mysqli_query($connection, $sql);
+                //check if updated
+                if($query){
+                    $success = "Post updated successfully";
+            }else {
+                $error = "Unable to update post";
+           }
+           
+        }
+
+        }else {
+            //do not update image/leave as it is
+            $title = $_POST["title"];
+                $content = $_POST["content"];
+                $status = $_POST["status"];
+                $category_id = $_POST["category_id"];
+                                
+                //sql statement
+                $sql = "UPDATE posts SET title='$title', content='$content', status='$status', category_id='$category_id' WHERE id = '$id' ";
+                //querry execution 
+                $query = mysqli_query($connection, $sql);
+                //check if updated
+                if($query){
+                    $success = "Post updated successfully";
+            }else {
+                $error = "Unable to update post";
+           }
+        }
+    }
+     
+    if(isset($_GET["delete_post"]) && !empty($_GET["delete_post"])) {
+        
+        $id = $_GET["delete_post"];
+        //SQL
+        $sql = "DELETE FROM posts WHERE id = '$id' ";
+        //querry execution
+        $query = mysqli_query($connection, $sql);
+        //check if deleted
+        if($query){
+            $success = "Post deleted successfully";
+        }else{
+            $error = "Unable to delete post";
+        }
+    }
+
 ?>  

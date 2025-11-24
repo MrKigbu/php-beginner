@@ -85,12 +85,13 @@ include 'inc/process.php';
   </thead>
   <tbody>
   <?php
+  $sn=1;
   $sql = "SELECT * FROM posts";
   $query = mysqli_query($connection, $sql);
   while ($result = mysqli_fetch_assoc($query)) {
     ?>
      <tr>
-      <td scope="row">1</td>     
+      <td scope="row"><?php echo $sn++; ?></td>     
       <td scope="row">
         <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
       </td>     
@@ -112,9 +113,9 @@ include 'inc/process.php';
       </td> 
 
       <td>
-        <a href="category-edit.php?edit_id=<?php echo $result["id"] ?>">Edit</a>
+        <a href="edit-post.php?edit_post_id=<?php echo $result["id"] ?>">Edit</a>
         |
-        <a href="category.php? delete_category=<?php echo $result["id"];  ?>">Delete</a>
+        <a href="? delete_post=<?php echo $result["id"] ?>">Delete</a>
       </td>
       
     </tr>
