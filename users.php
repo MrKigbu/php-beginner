@@ -16,7 +16,6 @@ include 'inc/process.php';
 <div class="container p-3">
     <div class="row">
       <div class="col-12">
-        <div class="col-12">
     <div class="row align-items-center">
         <div class="col-6">
             <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
@@ -28,12 +27,11 @@ include 'inc/process.php';
     </div>
 </div>
 
-      </div>
         <div class="col-3">
             <h6>Navigations</h6>
             <ul>
                 <li>
-                    <a href="posts.php" class="text-danger" >Posts</a>
+                    <a href="posts.php">Posts</a>
                 </li>
                  <li>
                     <a href="comments.php">Comments</a>
@@ -42,10 +40,10 @@ include 'inc/process.php';
                     <a href="new-post.php">Add New Posts</a>
                 </li>
                  <li>
-                    <a href="category.php" >Categories</a>
+                    <a href="category.php" class="text-danger" >Categories</a>
                 </li>
                  <li>
-                    <a href="#">Users</a>
+                    <a href="users.php" class="text-danger">Users</a>
                 </li>
                  <li>
                     <a href="#">Add New User</a>
@@ -54,7 +52,7 @@ include 'inc/process.php';
         </div>
         <div class="col-9">
         <div class="container">
-            <h6>All Posts</h6>
+            <h6>All Users</h6>
             
             <?php
         if(isset($error)) {
@@ -75,10 +73,10 @@ include 'inc/process.php';
      <table class="table table-primary table-hover table-sm">
   <thead>
     <tr>
-      <th scope="col">#</th>      
-      <th scope="col">Image</th>      
-      <th scope="col">Title</th>      
-      <th scope="col">Status</th>      
+      <th scope="col">#</th>           
+      <th scope="col">Name</th>      
+      <th scope="col">Email</th>      
+      <th scope="col">Role</th>      
       <th scope="col">Date</th>      
       <th scope="col">Action</th>
     </tr>
@@ -86,25 +84,25 @@ include 'inc/process.php';
   <tbody>
   <?php
   $sn=1;
-  $sql = "SELECT * FROM posts";
+  $sql = "SELECT * FROM users ORDER BY id DESC";
   $query = mysqli_query($connection, $sql);
   while ($result = mysqli_fetch_assoc($query)) {
     ?>
      <tr>
       <td scope="row"><?php echo $sn++; ?></td>     
       <td scope="row">
-        <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
+        <?php echo $result["name"] ?>
       </td>     
       <td>
-        <?php echo $result["title"] ?>
+        <?php echo $result["email"] ?>
       </td> 
       <td>
         <?php
-        if($result["status"]==1){
-            echo "Active";
-        }else{
-            echo "Not Active";
-        }
+        if($result["role"]==1){
+            echo "Admin"; 
+          }else{
+            echo "User"; 
+          }
         
         ?>
       </td> 
@@ -113,9 +111,9 @@ include 'inc/process.php';
       </td> 
 
       <td>
-        <a href="edit-post.php?edit_post_id=<?php echo $result["id"] ?>">Edit</a>
+        <a href="edit-user.php?edit_user_id=<?php echo $result["id"] ?>">Edit</a>
         |
-        <a href="? delete_post=<?php echo $result["id"] ?>">Delete</a>
+        <a href="? delete_user=<?php echo $result["id"] ?>">Delete</a>
       </td>
       
     </tr>

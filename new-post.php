@@ -39,7 +39,7 @@ require "inc/header.php";
                 <h6>Navigations</h6>
                 <ul>
                     <li><a href="posts.php">Posts</a></li>
-                    <li><a href="#">Comments</a></li>
+                    <li><a href="comments.php">Comments</a></li>
                     <li><a href="new-post.php" class="text-danger">Add New Posts</a></li>
                     <li><a href="category.php" >Categories</a></li>
                     <li><a href="#">Users</a></li>

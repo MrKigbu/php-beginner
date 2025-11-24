@@ -86,7 +86,7 @@ if(isset($_POST["register"])){
             $error = "Unable to update category";
         }
     }
-
+    
     if(isset($_POST["new_post"])){
         //Uploading to upload folder
         $target_dir = "uploads/";
@@ -187,5 +187,43 @@ if(isset($_POST["register"])){
             $error = "Unable to delete post";
         }
     }
+
+    if(isset($_POST["edit_user"]))
+        if(isset($_POST["change_password"]) && $_POST["change_password"]== "on"){
+        
+            //change password
+            $id = $_GET["edit_user_id"];
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $role = $_POST["role"];
+            $password = md5($_POST["password"]);
+            //sql 
+            $sql = "UPDATE users SET name = '$name', email = '$email', role = '$role', password = '$password' WHERE id ='$id'"; 
+            //query
+            $query = mysqli_query($connection, $sql);
+            //check if success 
+            if($query){
+                $success = "User data updated Successfully";
+            }else {
+                $error = "Unable to update user";
+            }
+        }else{
+            //Just update only the data             
+            $id = $_GET["edit_user_id"];
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $role = $_POST["role"];
+            
+            //sql 
+            $sql = "UPDATE users SET name = '$name', email = '$email', role = '$role' WHERE id ='$id'"; 
+            //query
+            $query = mysqli_query($connection, $sql);
+            //check if success 
+            if($query){
+                $success = "User data updated Successfully";
+            }else {
+                $error = "Unable to update user";
+            }
+        }
 
 ?>  
