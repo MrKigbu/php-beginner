@@ -19,11 +19,17 @@ if(isset($_GET["post_id"]) && !empty($_GET["post_id"])){
 <div class="container-fluid mx-3 my-3">
 <div class="row">
     <div class="col-8">
-        <div style="background: url('<?php echo $result["thumbnail"]?>');background-position: center;background-size:cover;background-repeat: no-repeat;">
-          <div style="background-color: #0000006e; padding: 20px; text-align:center;"><h2 class="text-white"><?php echo $result["title"]  ?></h2>
+      <?php if(isset($error)) { ?>
+                <div class="alert alert-danger"><strong><?= $error ?></strong></div>
+            <?php } elseif(isset($success)) { ?>
+                <div class="alert alert-success"><strong><?= $success ?></strong></div>
+            <?php } ?>
+        <div 
+        style="background: url('<?php echo $result["thumbnail"]?>');background-position: center;background-size:cover;background-repeat: no-repeat;">
+        <div style="background-color: #0000006e; padding: 20px; text-align:center;"><h2 class="text-white"><?php echo $result["title"]  ?></h2>
         </div>
         </div>
-        <hr>
+        <hr style="height: 4px; background: #333; border: none;">
         <div class="row bg-primary mb-2  p-2">
           <div class="col-6 text-start text-white" >Date Published: <?php echo date("F j,Y", strtotime($result["timestamp"])) ?></div>
           <div class="col-6 text-end text-white">Category: <?php 
@@ -42,7 +48,54 @@ if(isset($_GET["post_id"]) && !empty($_GET["post_id"])){
             <?php echo nl2br($result["content"]) ?>
           </p>
         </div>
+        <hr style="height: 4px; background: #333; border: none;">
+        <div>
+          <h4>
+            Comments
+          </h4>
+          <hr style="height: 4px; background: #333; border: none;">
+          <?php
+          $sql = "SELECT * FROM comments WHERE post_id = '$id' AND status = 1 ORDER BY id DESC";
+$query = mysqli_query($connection, $sql);
+
+if(mysqli_num_rows($query) > 0){
+    while($comment = mysqli_fetch_assoc($query)){
+        ?>
+        <div class="row mb-3">
+            <div class="col-6">
+                <?php 
+                $user_id = $comment["user_id"];
+                $sql2 = "SELECT * FROM users WHERE id = '$user_id'";
+                $query2 = mysqli_query($connection, $sql2);
+                $user = mysqli_fetch_assoc($query2);
+                ?>
+                <p>
+                    <?php echo $user["name"]; ?><br>
+                    <small><?php echo date("F j, Y", strtotime($comment["timestamp"])) ?></small>
+                </p>
+            </div>
+
+            <div class="col-6">
+                <?php echo $comment["message"]; ?>
+            </div>
+        </div>
+        <?php
+    }
+} else {
+    echo "<p>No comments found.<br>Be the first to comment!</p>";
+}          ?>
+          <form action="" class="" method="POST">            
+            <div class="form-group">
+              <label for="comment_new">New Comment</label>
+              <textarea name="comment_new" id="" class="form-control" cols="30" rows="5" placeholder="Enter Comment here"></textarea>
+            </div>
+            <div class="mt-2">
+              <button type="submit" class="btn btn-primary" name="add_comment">Add Comment</button>
+            </div>
+          </form>
+        </div>
     </div>
+
     <div class="col-4">
 
         <!-- sidebar -->
@@ -52,7 +105,7 @@ if(isset($_GET["post_id"]) && !empty($_GET["post_id"])){
                     <h4>Search post<h4>
                     <input type="text" name="search" class="form-control" placeholder="Enter search term" id="">
                 </div>
-                <button type="submit" class="btn btn-primary mt-2"> search</button>
+                <button type="submit" name="comment_new" class="btn btn-primary mt-2"> search</button>
             </form>
         </div>
 

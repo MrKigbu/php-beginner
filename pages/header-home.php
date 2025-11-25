@@ -1,9 +1,10 @@
  <nav class="navbar navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand text-primary" href="javascript:history.back()" >
+    <a class="navbar-brand text-primary" href="index.php" >
       <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
       Sammy Blog
     </a>
+    
     <div class="d-flex">
       <?php
       if (isset($_SESSION["user"])) {
@@ -23,3 +24,7 @@
     </div>
   </div>
 </nav>
+<div class="d-flex justify-content-between mb-3">
+  <button class="btn btn-primary" onclick="history.back()">Back</button>
+  <button class="btn btn-primary" onclick="history.forward()">Next</button>
+</div>

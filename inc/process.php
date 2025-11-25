@@ -263,6 +263,48 @@ if(isset($_POST["register"])){
             }
             }
 
-            
+            if(isset($_POST["comment_new"])){
+                $post_id = $_GET["post_id"];
+                $user_id = $_SESSION["user"]["id"];
+                $comment = $_POST["comment_new"];
+        
+                //sql statement 
+                $sql = "INSERT INTO comments(post_id, user_id, message) VALUES('$post_id', '$user_id', '$comment')";
+                //query execution/statement
+                $query = mysqli_query($connection, $sql);
+        
+                //Check if is stored 
+                if($query){
+                    $success = "Comment added successfully, waiting for approval";
+                    
 
+                }else {
+                    $error = "Unable to add comment";
+                }
+            }
+
+            if(isset($_GET["approve_comment"]) && !empty($_GET["approve_comment"])){
+                $comment_id = $_GET["approve_comment"];
+                $sql = "UPDATE comments SET status = 1 WHERE id = '$comment_id'";
+                //query 
+                $query = mysqli_query($connection, $sql);
+                //check if 
+                if($query){
+                    $success = "Comment approved";                    
+                }else {
+                    $error = "Unable to approve comment";
+                }
+            }
+            if(isset($_GET["delete_comment"]) && !empty($_GET["delete_comment"])){
+                $comment_id = $_GET["delete_comment"];
+                $sql = "DELETE FROM comments WHERE id = '$comment_id'";
+                //query 
+                $query = mysqli_query($connection, $sql);
+                //check if 
+                if($query){
+                    $success = "Comment Deleted";                    
+                }else {
+                    $error = "Unable to Delete Comment";
+                }
+            }
 ?>  
