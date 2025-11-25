@@ -16,7 +16,7 @@
         <div class="card-body">
             <h5 class="card-title"><?php echo $result["title"] ?></h5>
             <p class="card-text">Date: <?php echo date("F j,Y", strtotime($result["timestamp"])) ?></p>
-            <a href="post.php" class="btn btn-primary">Read Post</a>
+            <a href="post.php?post_id=<?php echo $result["id"] ?>" class="btn btn-primary">Read Post</a>
         </div>
         </div>
             </div>
