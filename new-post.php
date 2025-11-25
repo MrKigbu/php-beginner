@@ -42,8 +42,8 @@ require "inc/header.php";
                     <li><a href="comments.php">Comments</a></li>
                     <li><a href="new-post.php" class="text-danger">Add New Posts</a></li>
                     <li><a href="category.php" >Categories</a></li>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Add New User</a></li>
+                    <li><a href="users.php">Users</a></li>
+                    <li><a href="new_user.php">Add New User</a></li>
                 </ul>
             </div>
 

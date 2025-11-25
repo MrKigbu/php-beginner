@@ -34,7 +34,7 @@ include 'inc/process.php';
                     <a href="posts.php">Posts</a>
                 </li>
                  <li>
-                    <a href="#">Comments</a>
+                    <a href="comments.php">Comments</a>
                 </li>
                  <li>
                     <a href="new-post.php">Add New Posts</a>
@@ -43,10 +43,10 @@ include 'inc/process.php';
                     <a href="category.php" class="text-danger" >Categories</a>
                 </li>
                  <li>
-                    <a href="#">Users</a>
+                    <a href="users.php">Users</a>
                 </li>
                  <li>
-                    <a href="#">Add New User</a>
+                    <a href="new_user.php">Add New User</a>
                 </li>
             </ul>
         </div>
@@ -80,12 +80,13 @@ include 'inc/process.php';
   </thead>
   <tbody>
   <?php
+  $sn=1;
   $sql = "SELECT * FROM category";
   $query = mysqli_query($connection, $sql);
   while ($result = mysqli_fetch_assoc($query)) {
     ?>
      <tr>
-      <th scope="row">1</th>     
+      <th scope="row"><?php echo $sn++; ?></th>     
       <td><?php echo $result["name"];  ?></td>      
       <td>
         <a href="category-edit.php?edit_id=<?php echo $result["id"] ?>">Edit</a>

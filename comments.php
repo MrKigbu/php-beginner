@@ -52,7 +52,7 @@ include "inc/process.php";
                         <a href="users.php">Users</a>
                     </li>
                     <li>
-                        <a href="new-user.php">Add New User</a>
+                        <a href="new_user.php">Add New User</a>
                     </li>
                 </ul>
             </div>

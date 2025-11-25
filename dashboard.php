@@ -40,13 +40,13 @@ include 'inc/process.php';
                     <a href="new-post.php">Add New Posts</a>
                 </li>
                  <li>
-                    <a href="category.php" class="text-danger" >Categories</a>
+                    <a href="category.php"> Categories</a>
                 </li>
                  <li>
                     <a href="users.php">Users</a>
                 </li>
                  <li>
-                    <a href="#">Add New User</a>
+                    <a href="new_user.php">Add New User</a>
                 </li>
             </ul>
         </div>

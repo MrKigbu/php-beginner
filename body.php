@@ -45,7 +45,7 @@
                     ?>
 
                     <li>
-                        <a href="#">Links<?php echo $i; ?></a>
+                        <a href="category.php">Links<?php echo $i; ?></a>
                     </li>
                     <?php
                 }

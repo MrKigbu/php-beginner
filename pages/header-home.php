@@ -8,7 +8,7 @@
       <?php
       if (isset($_SESSION["user"])) {
         ?>
-        <a href="dashboard.php" class="nav-link text-primary"> <?php echo $_SESSION["user"]["name"]; ?> Dashboard</a>              
+        <a href="dashboard.php" class="nav-link text-primary"> <?php echo $_SESSION["user"]["name"]; ?> | Dashboard</a>              
         <?php
         }else {
         ?>

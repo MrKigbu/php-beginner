@@ -45,10 +45,10 @@ include 'inc/process.php';
                     <a href="category.php" >Categories</a>
                 </li>
                  <li>
-                    <a href="#">Users</a>
+                    <a href="users.php">Users</a>
                 </li>
                  <li>
-                    <a href="#">Add New User</a>
+                    <a href="new_user.php">Add New User</a>
                 </li>
             </ul>
         </div>

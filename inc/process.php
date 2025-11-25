@@ -73,6 +73,17 @@ if(isset($_POST["register"])){
             $error = "Unable to delete category";
         }
     }
+    if(isset($_GET["delete_user"]) && !empty($_GET["delete_user"])) {
+        //SQL
+        $id = $_GET["delete_user"];
+        $sql = "DELETE FROM users WHERE id = '$id' ";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            $success = "User deleted Successfully";
+        }else{
+            $error = "Unable to delete user";
+        }
+    }
     
     if(isset($_POST["edit_category"])){
         $name = $_POST["name"];
@@ -225,5 +236,33 @@ if(isset($_POST["register"])){
                 $error = "Unable to update user";
             }
         }
+
+        if(isset($_POST["new_user_admin"])){
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $password = md5($_POST["password"]);
+            $role = $_POST["role"];
+    
+            //check if user already exist 
+            $sql_check = "SELECT * FROM users WHERE email = '$email'";
+            $query_check = mysqli_query($connection, $sql_check);
+            if(mysqli_fetch_assoc($query_check)){
+                //give notification 
+                $error = "User already exist";
+            }else {
+                
+                //insert data into database using procedural method
+                $sql = "INSERT INTO users(name, email, password, role) VALUES('$name', '$email', '$password', '$role')";
+                $query = mysqli_query($connection, $sql) or die("Can't save data");
+                //check if success 
+                if($query){
+                $success = "User added successfully";
+            }else {
+                $error = "Unable to add user";
+            }
+            }
+            }
+
+            
 
 ?>  
