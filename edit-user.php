@@ -4,6 +4,10 @@ session_start();
 if (!isset($_SESSION["user"])) {
     header("location: login.php");
 }
+if ($_SESSION["user"]["role"]== "user") {
+    header("location: index.php");
+}
+
 // scripts and links 
 require "inc/header.php";
 ?>

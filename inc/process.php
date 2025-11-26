@@ -35,8 +35,18 @@ if(isset($_POST["register"])){
     
             //login to dashboard
             $_SESSION["user"] = $result;
-            header("location: dashboard.php");
-        $success = "User Logged in";
+            if($result["role"] == "user"){
+                if(isset($_SESSION["url"])){
+                    $post_id= $_SESSION["url"];
+                    header("location: post.php?post_id=$post_id");
+                }else{
+
+                    header("location: index.php");
+                }
+            }else{
+                header("location: dashboard.php");
+            }
+            $success = "User Logged in";
     }else {
         
         //User Not found

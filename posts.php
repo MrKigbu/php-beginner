@@ -1,8 +1,10 @@
 <?php
 session_start(); 
-if(!isset($_SESSION["user"])){
-  header("location: login.php");
+if (!isset($_SESSION["user"])) {
+    header("location: login.php");
 }
+
+
 //scritps and links 
 require "inc/header.php";
 

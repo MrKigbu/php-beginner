@@ -31,7 +31,7 @@
 
         <!-- sidebar -->
         <div class="border p-3">
-            <form action="" method="POST">
+            <form action="search.php" method="POST">
                 <div class="form-group">
                     <h4>Search post<h4>
                     <input type="text" name="search" class="form-control" placeholder="Enter search term" id="">

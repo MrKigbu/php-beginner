@@ -1,7 +1,7 @@
  <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand text-primary" href="index.php" >
-      <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+      <img src="Uploads/sammy.png" alt="" width="30" height="24">
       Sammy Blog
     </a>
     
@@ -10,6 +10,7 @@
       if (isset($_SESSION["user"])) {
         ?>
         <a href="dashboard.php" class="nav-link text-primary"> <?php echo $_SESSION["user"]["name"]; ?> | Dashboard</a>              
+        <a href="logout.php" class="nav-link text-danger"> | Logout</a>              
         <?php
         }else {
         ?>

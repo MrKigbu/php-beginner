@@ -13,6 +13,7 @@ if(isset($_GET["post_id"]) && !empty($_GET["post_id"])){
 }else{
     header("location: index.php");
   }
+  $_SESSION["url"] = $_GET["post_id"];
 ?>
 <div class="container">
    <?php require './pages/header-home.php';?>
@@ -82,9 +83,13 @@ if(mysqli_num_rows($query) > 0){
         <?php
     }
 } else {
-    echo "<p>No comments found.<br>Be the first to comment!</p>";
+    echo "<p>No comments Yet!.<br>Be the first to comment!</p>";
 }          ?>
-          <form action="" class="" method="POST">            
+<hr>
+      <?php
+      if(isset($_SESSION["user"])){
+        ?>
+         <form action="" class="" method="POST">            
             <div class="form-group">
               <label for="comment_new">New Comment</label>
               <textarea name="comment_new" id="" class="form-control" cols="30" rows="5" placeholder="Enter Comment here"></textarea>
@@ -93,6 +98,19 @@ if(mysqli_num_rows($query) > 0){
               <button type="submit" class="btn btn-primary" name="add_comment">Add Comment</button>
             </div>
           </form>
+
+        <?php
+
+      }else{
+        ?>
+        <a href="login.php">Login to comment</a>
+
+        <?php
+
+      }
+
+      ?>
+         
         </div>
     </div>
 
