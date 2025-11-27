@@ -43,7 +43,7 @@ require "inc/header.php";
         <li><a href="comments.php">Comments</a></li>
         <li><a href="users.php">Users</a></li>
         <li><a href="new_user.php">Add New User</a></li>
-        <li><a href="new-products.php">Add New Product</a></li>
+        <li><a href="new-products.php" class="text-danger" >Add New Product</a></li>
     <?php } ?>
 
     <!-- accessible to all logged users -->

@@ -1,4 +1,5 @@
-<div class="container">
+<div class="page-wrapper">
+    <div class="container">
    <?php require './pages/header-home.php';?>
 <div class="container-fluid mx-3 my-3">
 <div class="row">
@@ -66,4 +67,5 @@
 
 </div>
 <?php require './pages/footer-home.php';?>
+</div>
 </div>

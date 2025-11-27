@@ -1,4 +1,5 @@
-<?php
+<div class="page-wrapper">
+  <?php
 session_start();
 if(!isset($_SESSION["user"])){
     header("location: login.php");
@@ -153,3 +154,5 @@ require './pages/footer-home.php';
 <?php
 require "inc/footer.php";
 ?>
+
+</div>

@@ -1,4 +1,5 @@
-<?php
+<div class="page-wrapper">
+    <?php
 session_start();
 
 if (!isset($_SESSION["user"])) {
@@ -36,17 +37,19 @@ require "inc/header.php";
             <!-- Sidebar Navigation -->
             <div class="col-3">
                 <h6>Navigations</h6>
-                <ul>
+               <ul>
     <!-- admin only -->
     <?php if($_SESSION["user"]["role"] === "admin") { ?>
         <li><a href="posts.php">Posts</a></li>
         <li><a href="comments.php">Comments</a></li>
         <li><a href="users.php">Users</a></li>
         <li><a href="new_user.php">Add New User</a></li>
+        <li><a href="new-products.php">Add New Product</a></li>
     <?php } ?>
 
     <!-- accessible to all logged users -->
-    <li><a href="new-post.php" class="text-danger">Add New Posts</a></li>
+    <li><a href="products.php">All Products</a></li>
+    <li><a href="new-post.php" class="text-danger" >Add New Posts</a></li>
     <li><a href="category.php">Categories</a></li>
 </ul>
 
@@ -133,3 +136,5 @@ require './pages/footer-home.php';
 ?>
 
 <?php require "inc/footer.php"; ?>
+
+</div>

@@ -26,10 +26,10 @@ if(isset($_GET['post_category_id'] )&& !empty($_GET['post_category_id'])) {
                     ?>
 
                     <li style=" <?php echo $count > 0 ? 'margin-left: 10px;' : '' ?>">
-                        <a href="post_category.php?post_category_id=<?php echo $result_c['id']; ?>" 
-   class="<?php echo ($result_c['id'] == $id) ? 'text-danger' : ''; ?>">
-    <?php echo $result_c['name']; ?>
-</a>
+                    <a href="post_category.php?post_category_id=<?php echo $result_c['id']; ?>" 
+                        class="<?php echo ($result_c['id'] == $id) ? 'text-danger' : ''; ?>">
+                        <?php echo $result_c['name']; ?>
+                    </a>
 
                     </li>
                     <?php

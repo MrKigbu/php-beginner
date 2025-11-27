@@ -118,6 +118,7 @@ include 'inc/process.php';
 
       <td>
         <a href="edit-product.php?edit_product_id=<?php echo $result["id"] ?>">Edit</a>
+        
         |
         <a href="? delete_product=<?php echo $result["id"] ?>">Delete</a>
       </td>

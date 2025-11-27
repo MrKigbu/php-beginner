@@ -343,19 +343,56 @@ if(isset($_POST["register"])){
             }
             
             // Adding new product
-        if(isset($_POST["new_product"])){
+                if(isset($_POST["new_product"])){
 
-        //Uploading to upload folder
+                //Uploading to upload folder
+                $target_dir = "Uploads/";
+                $basename = basename($_FILES["image"]["name"]);
+                $upload_file = $target_dir . $basename;
+                //move uploaded file to upload folder
+                $move = move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
+                //check if file is moved
+                if($move){
+
+                // Collect form values
+                $url = "$upload_file";
+                $title = $_POST["title"];
+                $content = $_POST["content"];
+                $price = $_POST["price"];
+                $status = $_POST["status"];
+                $category_id = $_POST["category_id"];
+                $image = $url;
+
+                // SQL based on your table structure
+                $sql = "INSERT INTO products(title, content, price, status, category_id, image) 
+                        VALUES('$title', '$content', '$price', '$status', '$category_id', '$image')";
+
+                $query = mysqli_query($connection, $sql);
+
+                if($query){
+                    $success = "Product added successfully";
+                } else {
+                    $error = "Unable to add product: " . mysqli_error($connection);
+                }
+
+            } else {
+                $error = "Unable to upload image";
+            }
+            }
+ // END Adding new product
+ // UPDATING AN EXISTING PRODUCT
+        if(isset($_POST["edit_product"])) {
+        $id = $_GET["edit_product_id"];
+        if($_FILES["image"]["name"] != ""){
+
+        //update image
         $target_dir = "Uploads/";
-        $basename = basename($_FILES["image"]["name"]);
-        $upload_file = $target_dir . $basename;
+        $url = $target_dir.basename($_FILES["image"]["name"]);
         //move uploaded file to upload folder
-        $move = move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
-        //check if file is moved
-        if($move){
+        if(move_uploaded_file($_FILES["image"]["tmp_name"], $url)){
+        //update database
 
-        // Collect form values
-        $url = "$upload_file";
+        //parameters
         $title = $_POST["title"];
         $content = $_POST["content"];
         $price = $_POST["price"];
@@ -363,22 +400,54 @@ if(isset($_POST["register"])){
         $category_id = $_POST["category_id"];
         $image = $url;
 
-        // SQL based on your table structure
-        $sql = "INSERT INTO products(title, content, price, status, category_id, image) 
-                VALUES('$title', '$content', '$price', '$status', '$category_id', '$image')";
+        //sql statement
+        $sql = "UPDATE products SET title='$title', content='$content', price='$price', status='$status', category_id='$category_id', image='$image' WHERE id = '$id' ";
 
+        //querry execution 
         $query = mysqli_query($connection, $sql);
-
+        //check if updated
         if($query){
-            $success = "Product added successfully";
+            $success = "Product updated successfully";
+        }else {
+        $error = "Unable to update product<br>" . mysqli_error($connection);
+        }
         } else {
-            $error = "Unable to add product: " . mysqli_error($connection);
+            $error = "Unable to upload a new image";
+            
         }
 
-    } else {
-        $error = "Unable to upload image";
+        }else {
+        //do not update image/leave as it is
+                $title = $_POST["title"];
+            $content = $_POST["content"];
+            $price = $_POST["price"];
+            $status = $_POST["status"];
+            $category_id = $_POST["category_id"];
+                            
+            //sql statement
+            $sql = "UPDATE products SET title='$title', content='$content', price='$price', status='$status', category_id='$category_id' WHERE id = '$id' ";
+            //querry execution 
+            $query = mysqli_query($connection, $sql);
+            //check if updated
+            if($query){
+                $success = "Product updated successfully";
+        }else {
+            $error = "Unable to update product";
+        }
+        } 
+        }
+
+        if(isset($_GET["delete_product"]) && !empty($_GET["delete_product"])) {
+        //SQL
+        $id = $_GET["delete_product"];
+        $sql = "DELETE FROM products WHERE id = '$id' ";
+        $query = mysqli_query($connection, $sql);
+        if($query){
+            $success = "Products deleted Successfully";
+        }else{
+            $error = "Unable to delete Product <br>" . mysqli_error($connection);
+        }
     }
-}
 
             
 ?>  
