@@ -118,12 +118,12 @@ if(mysqli_num_rows($query) > 0){
 
         <!-- sidebar -->
         <div class="border p-3">
-            <form action="" method="POST">
+           <form action="search.php" method="POST">
                 <div class="form-group">
                     <h4>Search post<h4>
                     <input type="text" name="search" class="form-control" placeholder="Enter search term" id="">
                 </div>
-                <button type="submit" name="comment_new" class="btn btn-primary mt-2"> search</button>
+                <button type="submit" class="btn btn-primary mt-2"> search</button>
             </form>
         </div>
 
@@ -131,11 +131,13 @@ if(mysqli_num_rows($query) > 0){
             <h4>Categories</h4>
             <ul>
                 <?php
-                for ($i=1; $i <=3 ; $i++) { 
+                $sql_c = "SELECT * FROM category ORDER BY id DESC";
+                $query_c = mysqli_query($connection, $sql_c);
+                while ($result_c = mysqli_fetch_assoc($query_c)) { 
                     ?>
 
                     <li>
-                        <a href="#">Links<?php echo $i; ?></a>
+                        <a href="post_category.php?post_category_id=<?php echo $result_c["id"]; ?>"> <?php echo $result_c["name"]; ?></a>
                     </li>
                     <?php
                 }

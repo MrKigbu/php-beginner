@@ -20,27 +20,27 @@ include 'inc/process.php';
       <div class="col-12">
     <div class="row align-items-center">
         <div class="col-6">
-            <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
+            <h4>Welcome back <?php echo $_SESSION["user"]["name"]; ?></h4>
         </div>
 
-        <div class="col-6 text-end">
-            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-        </div>
-    </div>
-</div>
+        
+      </div>
+      </div>
 
         <div class="col-3">
             <h6>Navigations</h6>
-            <ul>
+  <ul>
     <!-- admin only -->
     <?php if($_SESSION["user"]["role"] === "admin") { ?>
         <li><a href="posts.php">Posts</a></li>
         <li><a href="comments.php">Comments</a></li>
         <li><a href="users.php">Users</a></li>
         <li><a href="new_user.php">Add New User</a></li>
+        <li><a href="new-products.php">Add New Product</a></li>
     <?php } ?>
 
     <!-- accessible to all logged users -->
+    <li><a href="products.php">All Products</a></li>
     <li><a href="new-post.php">Add New Posts</a></li>
     <li><a href="category.php">Categories</a></li>
 </ul>
@@ -87,7 +87,8 @@ include 'inc/process.php';
      <tr>
       <td scope="row"><?php echo $sn++; ?></td>     
       <td scope="row">
-        <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
+        <img height="50px" src="<?php echo $result["thumbnail"] ?>" alt="User Image" style="width:50px; 
+        height:50px; object-fit:cover; object-position:center;">
       </td>     
       <td>
         <?php echo $result["title"] ?>
@@ -103,7 +104,7 @@ include 'inc/process.php';
         ?>
       </td> 
       <td>
-        <?php echo $result["timestamp"] ?>
+        <?php echo date("F j, Y", strtotime($result["timestamp"])) ?>
       </td> 
 
       <td>

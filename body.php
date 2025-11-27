@@ -12,7 +12,8 @@
              ?>
               <div class="col-4 my-3">
                 <div class="card">
-        <img src="<?php echo $result["thumbnail"] ?>" style="height: 200px;width:100%;"class="card-img-top" alt="...">
+        <img src="<?php echo $result["thumbnail"] ?>" style="height: 200px;width:100%; object-fit:cover; object-position:center;"class="card-img-top" alt="...">
+        
         <div class="card-body">
             <h5 class="card-title"><?php echo $result["title"] ?></h5>
             <p class="card-text">Date: <?php echo date("F j,Y", strtotime($result["timestamp"])) ?></p>
@@ -44,11 +45,16 @@
             <h4>Categories</h4>
             <ul>
                 <?php
-                for ($i=1; $i <=3 ; $i++) { 
+                $sql_c = "SELECT * FROM category ORDER BY id DESC";
+                $query_c = mysqli_query($connection, $sql_c);
+                while ($result_c = mysqli_fetch_assoc($query_c)) { 
                     ?>
 
                     <li>
-                        <a href="#">Links<?php echo $i; ?></a>
+                        <a href="<?php  echo $result_c["id"]?>"> <?php echo $result_c["name"]; ?></a>               
+                            
+
+
                     </li>
                     <?php
                 }

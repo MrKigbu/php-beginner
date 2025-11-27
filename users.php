@@ -22,12 +22,10 @@ include 'inc/process.php';
       <div class="col-12">
     <div class="row align-items-center">
         <div class="col-6">
-            <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
+            <h4>Welcome Back <?php echo $_SESSION["user"]["name"]; ?></h4>
         </div>
-
-        <div class="col-6 text-end">
-            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-        </div>
+  
+        
     </div>
 </div>
 

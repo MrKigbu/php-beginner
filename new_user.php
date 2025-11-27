@@ -29,9 +29,7 @@ require "inc/header.php";
             <h4>Welcome back <?php echo $_SESSION["user"]["name"]; ?></h4>
         </div>
 
-        <div class="col-6 text-end">
-            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-        </div>
+        
     </div>
 </div>
 

@@ -1,5 +1,7 @@
 <?php
 require "connection.php";
+
+// User Registration
 if(isset($_POST["register"])){
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -20,6 +22,8 @@ if(isset($_POST["register"])){
         $success = "Registration Completed";
     }
     }
+
+    // User Login
     if(isset($_POST["login"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -61,6 +65,9 @@ if(isset($_POST["register"])){
         $error = "User email not found";       
     }
     }
+
+
+    // ADDING NEW CATEGORY
     if(isset($_POST["category"])){
         $name = $_POST["name"];
         //SQL
@@ -72,6 +79,9 @@ if(isset($_POST["register"])){
             $error = "Unable to add category";
         }
     }
+
+
+    // DELETING CATEGORY
     if(isset($_GET["delete_category"]) && !empty($_GET["delete_category"])) {
         //SQL
         $id = $_GET["delete_category"];
@@ -83,6 +93,8 @@ if(isset($_POST["register"])){
             $error = "Unable to delete category";
         }
     }
+
+        // DELETING USER
     if(isset($_GET["delete_user"]) && !empty($_GET["delete_user"])) {
         //SQL
         $id = $_GET["delete_user"];
@@ -95,6 +107,8 @@ if(isset($_POST["register"])){
         }
     }
     
+
+    // EDITING CATEGORY
     if(isset($_POST["edit_category"])){
         $name = $_POST["name"];
         $edit_id = $_GET["edit_id"];
@@ -108,6 +122,7 @@ if(isset($_POST["register"])){
         }
     }
     
+    // ADDING NEW POST
     if(isset($_POST["new_post"])){
         //Uploading to upload folder
         $target_dir = "uploads/";
@@ -143,7 +158,7 @@ if(isset($_POST["register"])){
        
     }
 
-
+    // UPDATING AN EXISTING POST
     if(isset($_POST["update_post"])) {
         $id = $_GET["edit_post_id"];
         if($_FILES["thumbnail"]["name"] != ""){
@@ -194,6 +209,8 @@ if(isset($_POST["register"])){
         }
     }
      
+
+    // DELETING A POST
     if(isset($_GET["delete_post"]) && !empty($_GET["delete_post"])) {
         
         $id = $_GET["delete_post"];
@@ -209,6 +226,7 @@ if(isset($_POST["register"])){
         }
     }
 
+    // EDITING USER
     if(isset($_POST["edit_user"]))
         if(isset($_POST["change_password"]) && $_POST["change_password"]== "on"){
         
@@ -247,6 +265,7 @@ if(isset($_POST["register"])){
             }
         }
 
+        // Adding new admin user
         if(isset($_POST["new_user_admin"])){
             $name = $_POST["name"];
             $email = $_POST["email"];
@@ -272,7 +291,9 @@ if(isset($_POST["register"])){
             }
             }
             }
+            
 
+            // Adding new comment
             if(isset($_POST["comment_new"])){
                 $post_id = $_GET["post_id"];
                 $user_id = $_SESSION["user"]["id"];
@@ -292,7 +313,8 @@ if(isset($_POST["register"])){
                     $error = "Unable to add comment";
                 }
             }
-
+            
+            // Approving a comment
             if(isset($_GET["approve_comment"]) && !empty($_GET["approve_comment"])){
                 $comment_id = $_GET["approve_comment"];
                 $sql = "UPDATE comments SET status = 1 WHERE id = '$comment_id'";
@@ -305,6 +327,8 @@ if(isset($_POST["register"])){
                     $error = "Unable to approve comment";
                 }
             }
+
+            // Deleting a comment
             if(isset($_GET["delete_comment"]) && !empty($_GET["delete_comment"])){
                 $comment_id = $_GET["delete_comment"];
                 $sql = "DELETE FROM comments WHERE id = '$comment_id'";
@@ -317,4 +341,44 @@ if(isset($_POST["register"])){
                     $error = "Unable to Delete Comment";
                 }
             }
+            
+            // Adding new product
+        if(isset($_POST["new_product"])){
+
+        //Uploading to upload folder
+        $target_dir = "Uploads/";
+        $basename = basename($_FILES["image"]["name"]);
+        $upload_file = $target_dir . $basename;
+        //move uploaded file to upload folder
+        $move = move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
+        //check if file is moved
+        if($move){
+
+        // Collect form values
+        $url = "$upload_file";
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $price = $_POST["price"];
+        $status = $_POST["status"];
+        $category_id = $_POST["category_id"];
+        $image = $url;
+
+        // SQL based on your table structure
+        $sql = "INSERT INTO products(title, content, price, status, category_id, image) 
+                VALUES('$title', '$content', '$price', '$status', '$category_id', '$image')";
+
+        $query = mysqli_query($connection, $sql);
+
+        if($query){
+            $success = "Product added successfully";
+        } else {
+            $error = "Unable to add product: " . mysqli_error($connection);
+        }
+
+    } else {
+        $error = "Unable to upload image";
+    }
+}
+
+            
 ?>  

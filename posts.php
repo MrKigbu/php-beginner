@@ -24,9 +24,7 @@ include 'inc/process.php';
             <h4>Welcome <?php echo $_SESSION["user"]["name"]; ?></h4>
         </div>
 
-        <div class="col-6 text-end">
-            <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
-        </div>
+        
     </div>
 </div>
 
@@ -95,7 +93,7 @@ include 'inc/process.php';
      <tr>
       <td scope="row"><?php echo $sn++; ?></td>     
       <td scope="row">
-        <img height="50px"  src="<?php echo $result["thumbnail"] ?>" alt="User Image">
+        <img height="50px" src="<?php echo $result["thumbnail"] ?>" alt="User Image" style="width:50px; height:50px; object-fit:cover; object-position:center;">
       </td>     
       <td>
         <?php echo $result["title"] ?>
